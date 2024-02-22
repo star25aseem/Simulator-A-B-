@@ -3,6 +3,10 @@
 #include<sstream>
 #include<string>
 using namespace std;
+void BLU(int rs1,int rs2)
+{
+    
+}
 class core
 {
     int *registers{ new int[32]{} };
