@@ -5,24 +5,23 @@
 #include<algorithm>
 #include<map>
 #include<string>
-using namespace std;
 class core
 {
     public:
     int *registers{ new int[32]{} };
     int pc;
-    string l;
+    std::string l;
     int base;
-    string h;
-    string f;
-    vector<int> word;
-    map<int,string> m;
+    std::string h;
+    std::string f;
+    std::vector<int> word;
+    std::map<int,std::string> m;
 
-    void execute(string b,int *mem)
+    void execute(std::string b,int *mem)
     {
-        vector<string> parts;
+        std::vector<std::string> parts;
         
-        stringstream str(b);
+        std::stringstream str(b);
         while(getline(str,h,' '))
         {
             parts.push_back(h);
@@ -41,32 +40,32 @@ class core
             int rd,rs1,rs2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 rd=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 rd=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 rs1=stoi(f);
             }
             if(parts[2].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 rs1=stoi(f);
             }
             if(parts[3].size()>2)
             {
-                f=string(1,parts[3][1])+string(1,parts[3][2]);
+                f=std::string(1,parts[3][1])+std::string(1,parts[3][2]);
                 rs2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[3][1]);
+                f=std::string(1,parts[3][1]);
                 rs2=stoi(f);
             }
             registers[rd]=registers[rs1]+registers[rs2];
@@ -77,32 +76,32 @@ class core
             int rd,rs1,rs2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 rd=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 rd=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 rs1=stoi(f);
             }
             if(parts[2].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 rs1=stoi(f);
             }
             if(parts[3].size()>2)
             {
-                f=string(1,parts[3][1])+string(1,parts[3][2]);
+                f=std::string(1,parts[3][1])+std::string(1,parts[3][2]);
                 rs2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[3][1]);
+                f=std::string(1,parts[3][1]);
                 rs2=stoi(f);
             }
             registers[rd]=registers[rs1]-registers[rs2];
@@ -113,22 +112,22 @@ class core
             int rd,rs,k;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 rd=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 rd=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 rs=stoi(f);
             }
             if(parts[2].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 rs=stoi(f);
             }
             k=stoi(parts[3]);
@@ -140,22 +139,22 @@ class core
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 r2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 r2=stoi(f);
             }
             int y=0;
@@ -180,22 +179,22 @@ class core
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 r2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 r2=stoi(f);
             }
             int y=0;
@@ -220,22 +219,22 @@ class core
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 r2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 r2=stoi(f);
             }
             int y=0;
@@ -260,22 +259,22 @@ class core
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
             if(parts[2].size()>2)
             {
-                f=string(1,parts[2][1])+string(1,parts[2][2]);
+                f=std::string(1,parts[2][1])+std::string(1,parts[2][2]);
                 r2=stoi(f);
             }
             if(parts[3].size()==2)
             {
-                f=string(1,parts[2][1]);
+                f=std::string(1,parts[2][1]);
                 r2=stoi(f);
             }
             int y=0;
@@ -310,48 +309,48 @@ class core
         else if(parts[0]=="lw")
         {
             int x,y;
-            string w;
+            std::string w;
             int offset;
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
             if(parts[2][2]=='x'||parts[2][3]=='x')
             {
                 if(parts[2][2]=='x')
                 {
-                    f=string(1,parts[2][0]);
+                    f=std::string(1,parts[2][0]);
                     offset=stoi(f);
                     if(parts[2].size()==5)
                     {
-                        w=string(1,parts[2][3]);
+                        w=std::string(1,parts[2][3]);
                         r2=stoi(w);                       
                     }
                     if(parts[2].size()==6)
                     {
-                        w=string(1,parts[2][3])+string(1,parts[2][4]);
+                        w=std::string(1,parts[2][3])+std::string(1,parts[2][4]);
                         r2=stoi(w);                       
                     }
                 }
                 if(parts[2][3]=='x')
                 {
-                    f=string(1,parts[2][0])+string(1,parts[2][1]);
+                    f=std::string(1,parts[2][0])+std::string(1,parts[2][1]);
                     offset=stoi(f);
                     if(parts[2].size()==6)
                     {
-                        w=string(1,parts[2][4]);
+                        w=std::string(1,parts[2][4]);
                         r2=stoi(w);                       
                     }
                     if(parts[2].size()==7)
                     {
-                        w=string(1,parts[2][4])+string(1,parts[2][5]);
+                        w=std::string(1,parts[2][4])+std::string(1,parts[2][5]);
                         r2=stoi(w);                       
                     }
                 }
@@ -366,46 +365,46 @@ class core
         else if(parts[0]=="sw")
         {
             int x,y;
-            string w;
+            std::string w;
             int offset;
             int r1,r2;
             if(parts[1].size()>2)
             {
-                f=string(1,parts[1][1])+string(1,parts[1][2]);
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
                 r1=stoi(f);
             }
             if(parts[1].size()==2)
             {
-                f=string(1,parts[1][1]);
+                f=std::string(1,parts[1][1]);
                 r1=stoi(f);
             }
                 if(parts[2][2]=='x')
                 {
-                    f=string(1,parts[2][0]);
+                    f=std::string(1,parts[2][0]);
                     offset=stoi(f);
                     if(parts[2].size()==5)
                     {
-                        w=string(1,parts[2][3]);
+                        w=std::string(1,parts[2][3]);
                         r2=stoi(w);                       
                     }
                     if(parts[2].size()==6)
                     {
-                        w=string(1,parts[2][3])+string(1,parts[2][4]);
+                        w=std::string(1,parts[2][3])+std::string(1,parts[2][4]);
                         r2=stoi(w);                       
                     }
                 }
                 if(parts[2][3]=='x')
                 {
-                    f=string(1,parts[2][0])+string(1,parts[2][1]);
+                    f=std::string(1,parts[2][0])+std::string(1,parts[2][1]);
                     offset=stoi(f);
                     if(parts[2].size()==6)
                     {
-                        w=string(1,parts[2][4]);
+                        w=std::string(1,parts[2][4]);
                         r2=stoi(w);                       
                     }
                     if(parts[2].size()==7)
                     {
-                        w=string(1,parts[2][4])+string(1,parts[2][5]);
+                        w=std::string(1,parts[2][4])+std::string(1,parts[2][5]);
                         r2=stoi(w);                       
                     }
                 }   
@@ -441,20 +440,20 @@ public:
     core core2;
     int *memory1=new int[1024]();
     int *memory2=new int[1024]();
-    map<int,string> m;
-    vector<string> v;
+    std::map<int,std::string> m;
+    std::vector<std::string> v;
     int pc=1;
     void runprogramCore1()
     {
-        string filename;
-        cout<<"enter file name:";
-        getline(cin,filename);
-        ifstream infile(filename);
+        std::string filename;
+        std::cout<<"enter file name:";
+        std::getline(std::cin,filename);
+        std::ifstream infile(filename);
         if(!infile.is_open())
         {
-            cout<<"err"<<endl;
+            std::cout<<"err"<<std::endl;
         }
-        string o;
+        std::string o;
         while(getline(infile,o))
         {
             v.push_back(o);
@@ -462,7 +461,7 @@ public:
         checkingcore1();
         for(int i=0;i<v.size();i++)
         {
-            cout<<v[i]<<endl;
+            std::cout<<v[i]<<std::endl;
         }
         infile.close();
         int k=0;
@@ -477,35 +476,35 @@ public:
         {
             for(int j=0;j<16;j++)
             {
-                cout<<core1.registers[y]<<" ";
+                std::cout<<core1.registers[y]<<" ";
                 y++;
             }
-            cout<<endl;
+            std::cout<<std::endl;
         }
         int u=0;
         for(int i=0;i<32;i++)
         {
             for(int j=0;j<32;j++)
             {
-                cout<<memory1[u]<<" ";
+                std::cout<<memory1[u]<<" ";
                 u++;
             }
-            cout<<endl;
+            std::cout<<std::endl;
         }
         v.clear();
-        cout<<endl<<endl;
+        std::cout<<std::endl;
     }
     void runprogramCore2()
     {
-        string filename;
-        cout<<"enter file name:";
-        getline(cin,filename);
-        ifstream infile(filename);
+        std::string filename;
+        std:: cout<<"enter file name:";
+        std::getline(std::cin,filename);
+        std::ifstream infile(filename);
         if(!infile.is_open())
         {
-            cout<<"err"<<endl;
+            std::cout<<"err"<<std::endl;
         }
-        string o;
+        std::string o;
         while(getline(infile,o))
         {
             v.push_back(o);
@@ -513,7 +512,7 @@ public:
         checkingcore2();
         for(int i=0;i<v.size();i++)
         {
-            cout<<v[i]<<endl;
+            std::cout<<v[i]<<std::endl;
         }
         infile.close();
         int k=0;
@@ -528,20 +527,20 @@ public:
         {
             for(int j=0;j<16;j++)
             {
-                cout<<core2.registers[y]<<" ";
+                std::cout<<core2.registers[y]<<" ";
                 y++;
             }
-            cout<<endl;
+           std:: cout<<std::endl;
         }
         int u=0;
         for(int i=0;i<32;i++)
         {
             for(int j=0;j<32;j++)
             {
-                cout<<memory2[u]<<" ";
+                std::cout<<memory2[u]<<" ";
                 u++;
             }
-            cout<<endl;
+            std::cout<<std::endl;
         }
     }
     void checkingcore1()
@@ -556,9 +555,9 @@ public:
             }
             if(v[t][y]==':')
             {
-                string h;
+                std::string h;
                 h=v[t];
-                string sd;
+                std::string sd;
                 sd=h.substr(0,y);
                 core1.m[t]=sd;
             }
@@ -577,9 +576,9 @@ public:
             }
             if(v[t][y]==':')
             {
-                string h;
+                std::string h;
                 h=v[t];
-                string sd;
+                std::string sd;
                 sd=h.substr(0,y);
                 core2.m[t]=sd;
             }
