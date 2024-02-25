@@ -13,8 +13,10 @@ class core
     std::string l;
     int base;
     std::string h;
+    int mp_index=0;
     std::string f;
     std::vector<int> word;
+    std::map<int,std::pair<std::string,std::string>> mp;
     std::map<int,std::string> m;
 
     void execute(std::string b,int *mem)
@@ -26,14 +28,22 @@ class core
         {
             parts.push_back(h);
         }
+        std::string::iterator it =parts[0].end();
         if(parts[0]=="base:")
         {
-            base=stoi(parts[1]);
+            base=stoi(parts[2]);
             for(int i=0;i<word.size();i++)
             {
                 mem[base+i]=word[i];
             }
             pc=pc+1;
+        }
+        else if(*(it-1)==':' && parts[1]==".string"){
+
+            std::pair<std::string,std::string> p={parts[0],parts[2].substr(1,parts[2].length()-2)};
+            mp[mp_index]=p;
+            mp_index++;
+            pc+=1;
         }
         else if(parts[0]=="add")
         {
@@ -427,6 +437,72 @@ class core
         {
             pc=pc+1;
         }
+                else if(parts[0]=="li"){
+            int rd,k;
+            if(parts[1].size()>2)
+            {
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
+                rd=stoi(f);
+            }
+            if(parts[1].size()==2)
+            {
+                f=std::string(1,parts[1][1]);
+                rd=stoi(f);
+            }
+            k=stoi(parts[2]);
+            registers[rd]=k;
+            pc+=1;
+        }
+        else if(parts[0]=="la"){
+            int rd;
+            std::string w;
+            if(parts[1].size()>2)
+            {
+                f=std::string(1,parts[1][1])+std::string(1,parts[1][2]);
+                rd=stoi(f);
+            }
+            if(parts[1].size()==2)
+            {
+                f=std::string(1,parts[1][1]);
+                rd=stoi(f);
+            }
+            for(auto it=mp.begin();it!=mp.end();++it){
+                if(it->second.first==parts[2]){
+                    registers[rd]=it->first;
+                }
+            }
+            pc+=1;
+        }
+        else if(parts[0]=="ecall"){
+            switch(registers[17]){
+                case 1:
+               // cout<<this->registers[10]<<" ";
+                  printf("%d",registers[10]);
+                   break;
+                case 2:
+                    printf("%f",registers[10]);
+                    break;
+                case 4:
+                   std:: cout<<mp[registers[10]].second;
+                    break;
+                case 10:
+                  std::cout<<"Program exited with code: 0";
+                  return;
+                  break;
+                case 11:
+                  printf("%c",registers[10]);
+                  break;
+                case 34:
+                case 35:
+                case 36:
+                case 93:
+                    std::cout<<"Program exited with code: ";
+                    std::cout<<registers[10];
+                    return; 
+                    break;
+            }
+            pc+=1;              
+        }
         else
         {
             pc++;
@@ -459,10 +535,6 @@ public:
             v.push_back(o);
         }
         checkingcore1();
-        for(int i=0;i<v.size();i++)
-        {
-            std::cout<<v[i]<<std::endl;
-        }
         infile.close();
         int k=0;
         core1.pc=0;
@@ -471,6 +543,7 @@ public:
             core1.execute(v.at(k),&(*memory1));
             k=core1.pc;
         }
+        std::cout<<std::endl;
         int y=0;
         for(int i=0;i<2;i++)
         {
@@ -510,10 +583,6 @@ public:
             v.push_back(o);
         }
         checkingcore2();
-        for(int i=0;i<v.size();i++)
-        {
-            std::cout<<v[i]<<std::endl;
-        }
         infile.close();
         int k=0;
         core2.pc=0;
@@ -522,6 +591,7 @@ public:
             core2.execute(v.at(k),&(*memory2));
             k=core2.pc;
         }
+        std::cout<<std::endl;
         int y=0;
         for(int i=0;i<2;i++)
         {
