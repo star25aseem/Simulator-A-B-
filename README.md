@@ -27,3 +27,16 @@ discussion:Nothing much just a little debugging session<br />
 coding session:Aseem Anand did final touch in class core by adding some last instructions <br />
                 I.kalyan Anudeep wrote the assembly code for bubble sort and selection sort & implemented running 2 cores in processor and some memory handling <br />
                 with some final debugging session we completed the phase 1 of project
+27th feb:<br />
+members:Aseem Anand,I.Kalyan Anudeep<br />
+insights:plan was made how to proceed further
+1 march:<br />
+members:Aseem Anand,I.Kalyan Anudeep<br />
+insights:general coding session in which we completed IDRF() and EX() function
+5 march:<br />
+members:Aseem Anand,I.Kalyan Anudeep<br />
+insights:general coding session in which we completed MEM() and WB()
+7 march:<br />
+insights:we completed a code structure which was not running perfectly
+9th march and 10th march:<br />
+insights:general debbugging session and some code optimisation
