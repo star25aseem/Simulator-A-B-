@@ -31,9 +31,5 @@ addi x28 x0 0
 lw x16 base              
 exit:
 addi x28 x28 1
-lw x20 0(x16)
-li x17 1
-addi x10 x20 0
-ecall
 addi x16 x16 1
 bne x28 x25 exit
