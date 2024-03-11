@@ -635,6 +635,7 @@ class core
     }
     void pipeline(std::vector<std::string> fg,int latif,int latid,int latex,int latmem,int latwb,int *memory)
     {
+        int instructions =0;
         int cycle=0;
         std::map<int,std::pair<int,std::string>> ij;
         std::map<int,std::queue<std::pair<int,std::string>>> ins;
@@ -742,7 +743,7 @@ class core
                         // }
                     }  
                     if(!ins[1].empty()&&stall==false)
-                    {    
+                    {    instructions++;
                         int x=ins[1].front().first;
                         IF(ins[1].front().second);
                         ins[1].pop();
@@ -765,7 +766,7 @@ class core
                 }
             }
         }
-        float a=fg.size();
+        float a=instructions;
         float b=cycle;
         float c=a/b;
         printf("IPC:%.3f\n",c);
