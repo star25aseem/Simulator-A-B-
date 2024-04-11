@@ -1,4 +1,4 @@
-9th feb:<br />
+19th feb:<br />
 members:Aseem Anand,I.Kalyan Anudeep<br />
 decisions: We decided the key dates of meeting according to our academic schedule and created this repository<br />
 13th feb(After the Lab session):<br />
@@ -40,3 +40,27 @@ insights:general coding session in which we completed MEM() and WB()
 insights:we completed a code structure which was not running perfectly
 9th march and 10th march:<br />
 insights:general debbugging session and some code optimisation
+
+
+24-03-2024<br />
+members:Aseem Anand,I.Kalyan Anudeep<br />
+Dicussion on the code based on the phase2. we realised that we can make our phase 2 better.
+so,we started working on that
+<br />
+due to  holidays,their were communication gap ,hence,some communication gap got created
+and we were not able to work on one code properly ,after hence due to communication gap debugging didn't went properly 
+1-04-2024<br />
+We started debugging<br />
+4-04-2024 <br />  
+We have started cache and written the cache code by the idea othat sir gave and we added data,miss rate ,hit rate to that and linked that code to the phase2(all the instructions accessing memory can identify can identify cache and do their implementation on cache) to make it phase3 and phase 3_2 to work properly<br />
+6-04-2024<br />
+We have done a debugging session<br />
+8-04-2024<br />
+Handled stalls <br />
+9-04-2024<br />
+Handled branch statements(for some branches in phase3_2.cpp) data hazards,memory storings(by .word) and handles lines like .data,.text,base: etc in phase3.cpp <br />
+10-04-2024<br />
+Debugging on all the code we have written upto now <br />
+
+Issues:<br />
+1.Branch statements are not working correctly<br />
