@@ -1,0 +1,46 @@
+.data
+arr:.word 1,2,3,4,5,6,7,8,9,10,20,19,18,17,16,15,14,13,12,11
+space:.string " "
+.text
+main:
+la x1 arr
+li x3 0 #iterator for loop1
+li x4 0 #iterator for loop2
+li x12 0 #iterator used in printing
+li x18 20
+li x19 19
+loop1:
+li x4,0
+la x1,arr
+loop2:
+lw x5 0(x1)
+lw x6 4(x1)
+blt x6 x5 swap
+After_swap:
+addi x4 x4 1
+addi x1 x1 4
+li x13 19
+sub x13 x13 x3
+blt x4 x13 loop2
+j No_swap
+swap:
+sw x6 0(x1)
+sw x5 4(x1)
+j After_swap
+No_swap:
+addi x3 x3 1
+blt x3 x19 loop1
+final_Array:
+la x1 arr
+print:
+lw x10 0(x1)
+li x17 1
+ecall
+la x10 space
+li x17 4
+ecall
+addi x1 x1 4
+addi x12 x12 1
+blt x12 x18 print
+li x17 10
+ecall
